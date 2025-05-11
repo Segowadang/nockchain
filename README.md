@@ -47,7 +47,7 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 
 ---
 
-## CLI Setup
+# CLI Setup
 ### Step 1: Install Dependecies
 * Update Packages
 ```bash
