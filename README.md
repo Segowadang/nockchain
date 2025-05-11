@@ -10,7 +10,7 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 
 ## Mainnet Network Details
 - Mainnet to be launched at 19th May.
-- 10 mins block time same a bitcoin.
+- 10 mins block time (same as bitcoin).
 - For Testnet, we run *"Miner"* and a *"simulated local testnet"* with a **fake genesis block**, to connect our Miner to it.
 - Once Mainnet live, **public peers** are published, so we just need to run Miner alone. It connects to public peers.
 
