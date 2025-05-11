@@ -51,7 +51,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 ```
 
-* Install Docker (For Mainnet, we might choose Docker setup)
+* Docker (For Mainnet, we might choose Docker setup)
 ```bash
 sudo apt update -y && sudo apt upgrade -y
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
