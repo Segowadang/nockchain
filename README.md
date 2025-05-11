@@ -176,6 +176,8 @@ I (12:18:32) nc: block by-height: [Ok(%heavy-n) Ok(1) 0]
 
 ## Usefull commands
 ### Wallet commands:
+> Note: After every terminal restart, Ensure you execute these two commands before executing wallet commands again: `cd nockchain` & `export PATH="$PATH:$(pwd)/target/release"`.  By doing this, you won't get Error: `wallet: command not found`.
+
 General Wallet Command:
 ```bash
 wallet --nockchain-socket ./test-leader/nockchain.sock
