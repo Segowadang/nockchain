@@ -33,6 +33,8 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 >
 > Meaning they will likely dominate block rewards over the vast majority of people, but yet the protocol might potentially be rewarding for early users.
 
+---
+
 ## CLI Setup
 ### Step 1: Install Dependecies
 * Update Packages
