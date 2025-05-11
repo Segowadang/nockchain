@@ -31,10 +31,17 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
   </tr>
   <tr>
     <td><code>16 GB</code></td>
-    <td><code>More cores,more mine</code></td>
+    <td><code>6 cores or higher</code></td>
     <td><code>50-200 GB SSD</code></td>
   </tr>
 </table>
+
+* more CPU = more hashrate = more chances
+* We still can't say that's enough, because it's just a testnet environment and we need to wait until mainnet.
+
+---
+
+## OS Requirements
 
 * **Windows Users:** Install Linux Ubuntu on your Windows using this [Guide](https://github.com/0xmoei/Install-Linux-on-Windows)
 * **VPS:** Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
