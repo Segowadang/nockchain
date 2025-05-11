@@ -4,6 +4,7 @@ Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Wo
 The team has released a Public Testnet to run a ***local testnet node*** and a ***testnet miner***, to explore how Nockchain works before Mainnet goes live.
 
 ## $NOCK Details
+- Mining starts May 19th.
 - Total Supply: 2^32 nocks (around 4.29 billion).
 - Fair launch: 100% of $NOCK will be issued to Miners.
 - $NOCK is used to pay for blockspace on Nockchain.
