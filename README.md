@@ -20,12 +20,24 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 ![image](https://github.com/user-attachments/assets/ead8fbd3-4199-452a-94c4-68b371c21aad)
 
 ## Hardware Requirements
-* zkPoW is **CPU-mining** currently
-* 16GB of RAM
-* 200GB of available disk space
-* System: Local PC or VPS
-* Windows Users: Install Linux Ubuntu on your Windows using this [Guide](https://github.com/0xmoei/Install-Linux-on-Windows)
-* VPS: Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
+<table>
+  <tr>
+    <th colspan="3">Miner is CPU-based initially</th>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>CPU</td>
+    <td>Disk</td>
+  </tr>
+  <tr>
+    <td><code>16 GB</code></td>
+    <td><code>More cores,more mine</code></td>
+    <td><code>50-200 GB SSD</code></td>
+  </tr>
+</table>
+
+* **Windows Users:** Install Linux Ubuntu on your Windows using this [Guide](https://github.com/0xmoei/Install-Linux-on-Windows)
+* **VPS:** Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
 
 > Note: Miners are initially CPU-based for users and will eventually move to GPU and ASIC.
 >
