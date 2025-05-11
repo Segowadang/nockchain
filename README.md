@@ -24,10 +24,17 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 * 16GB of RAM
 * 200GB of available disk space
 * System: Local PC or VPS
-* Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
+* Windows Users: Install Linux Ubuntu on your Windows using this [Guide](https://github.com/0xmoei/Install-Linux-on-Windows)
+* VPS: Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
+
+> Note: While zkPoW is initially CPU-based for users, Zorp as a for-profit labs company behind Nockchain will be selling private, closed-source software to mining partners, possibly even GPU-based to help bootstrap the initial security and proofrate of the network.
+>
+> Meaning they will likely dominate block rewards over the vast majority of people, but yet the protocol might potentially be rewarding for early users.
 
 ## CLI Setup
-### Step 1: Install Rust
+### Step 1: Install Dependecies
+* Update Packa
+* Rust:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
