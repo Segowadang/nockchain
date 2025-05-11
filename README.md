@@ -166,8 +166,23 @@ I (12:18:32) nc: block by-height: [Ok(%heavy-n) Ok(1) 0]
 * To minimize:  `Ctrl` + `A` + `D`
 
 ## Usefull commands
+### Wallet commands:
+General Wallet Command:
+```bash
+wallet --nockchain-socket ./test-leader/nockchain.sock
+```
+Wallet Balance:
+```bash
+wallet --nockchain-socket ./test-leader/nockchain.sock balance
+```
+* It looks good. `~` is like a 0 and balance will be 0 until you mine a block.
+
+![image](https://github.com/user-attachments/assets/52550e55-21b2-4625-84f9-3250eca367f5)
+
+* [Official repo](https://github.com/zorp-corp/nockchain/blob/master/crates/wallet/README.md) for more Wallet commands.
+
 ### Screen commands:
-Do not conflict screen into each other. before opening or returning any other screen, make sure to minimize your current screen
+Ensure screens do not overlap. Before opening or switching to another screen, minimize or close the current screen.
 ```console
 # Return leader screen (leader logs)
 screen -r leader
@@ -187,6 +202,3 @@ Press: Ctrl + C
 # Kill and Remove screen when outside a screen (replace NAME)
 screen -XS NAME quit
 ```
-
-### Wallet commands:
-Visit [official wallet repo](https://github.com/zorp-corp/nockchain/blob/master/crates/wallet/README.md) for commands.
