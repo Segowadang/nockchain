@@ -106,15 +106,37 @@ make install-choo
 * This compiles `choo`, the Nock-based compiler used for running Jock programs and ZKVM applications.
   
 ### Step 4: Build
+Building may take more than 15 minutes.
 ```bash
-# Eden ZKVM, Jock language support
+# Eden ZKVM, Jock language
 make build-hoon-all
 
 # Rust-based node and drivers
 make build
 ````
 
-### Step 5: Run Leader Node
+## Step 5: Setup Wallet
+* Set PATH:
+```bash
+export PATH="$PATH:$(pwd)/target/release"
+```
+* Create wallet:
+```bash
+wallet keygen
+```
+* Save `memo`, `private key` & `public key` of your wallet.
+
+## Step 6: Configure Nodes
+Your Node's configuration is in `Makefile`
+Open `Makefile`:
+```bash
+nano Makefile
+```
+* `MINING_PUBKEY`: Replace your wallet `public key` with its value.
+* `Ports`: By default, Nodes use ports `3005` and `3006`. If these ports are occupied on your system, modify them in the node configuration.
+* To save: `Ctrl+X` + `Y` + `Enter`
+
+### Step 7: Run Leader Node
 * Open a screen:
 ```bash
 screen -S leader
@@ -123,20 +145,48 @@ screen -S leader
 ```bash
 make run-nockchain-leader
 ```
+* Wait for it to install.
+* To minimize:  `Ctrl` + `A` + `D`
 
-### Step 6: Run Follower Node:
+### Step 8: Run Follower Node:
 * Open a screen
 ```bash
-screen -S leader
+screen -S follower
 ```
 
 * Start a **Follower Node** (Miner Node for connecting to other peers):
 ```bash
 make run-nockchain-follower
 ```
-
-## Wallet
-
-```bash
-export PATH="$PATH:$(pwd)/target/release"
+```console
+# OK Response:
+I (12:18:31) "inner dumbnet cause: [%command %timer]"
+I (12:18:32) nc: block by-height: [Ok(%heavy-n) Ok(1) 0]
 ```
+* To minimize:  `Ctrl` + `A` + `D`
+
+## Usefull commands
+### Screen commands:
+Do not conflict screen into each other. before opening or returning any other screen, make sure to minimize your current screen
+```console
+# Return leader screen (leader logs)
+screen -r leader
+
+# Return leader screen (follower logs)
+screen -r follower
+
+# Minimize screen
+Press: CTRL + A + D
+
+# Screens list
+screen -ls
+
+# Stop Node when inside a screen
+Press: Ctrl + C
+
+# Kill and Remove screen when outside a screen (replace NAME)
+screen -XS NAME quit
+```
+
+### Wallet commands:
+Visit [official wallet repo](https://github.com/zorp-corp/nockchain/blob/master/crates/wallet/README.md) for commands.
