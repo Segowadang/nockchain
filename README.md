@@ -132,6 +132,7 @@ export PATH="$PATH:$(pwd)/target/release"
 wallet keygen
 ```
 * Save `memo`, `private key` & `public key` of your wallet.
+> Note: After each terminal restart, Ensure you execute these two commands before executing wallet commands again: `cd nockchain` & `export PATH="$PATH:$(pwd)/target/release"`.  By doing this, you won't get Error: `wallet: command not found`.
 
 ## Step 6: Configure Nodes
 Your Node's configuration is in `Makefile`
