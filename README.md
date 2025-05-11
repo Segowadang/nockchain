@@ -1,6 +1,8 @@
 ## Nockchain
 Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Work (zkPoW). Miners create a ZK-Proof (ZKP) of a fixed puzzle computation, then hash the ZKP, and earn $NOCK based on their computation power.
 
+The team has released a Public Testnet to run a ***local testnet node*** and a ***testnet miner***, to explore how Nockchain works before Mainnet goes live.
+
 ## $NOCK Details
 - Total Supply: 2^32 nocks (around 4.29 billion).
 - Fair launch: 100% of $NOCK will be issued to Miners.
@@ -22,4 +24,46 @@ Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Wo
 * 16GB of RAM
 * 200GB of available disk space
 
-## Setup
+
+
+## CLI Setup
+### Step 1: Install Rust
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+source $HOME/.cargo/env
+```
+
+### Step 2: Clone NockChain Repo
+```bash
+git clone https://github.com/zorp-corp/nockchain
+
+cd nockchain
+```
+
+### Step 3: Install Choo (Jock/Hoon Compiler)
+```bash
+make install-choo
+```
+* This compiles `choo`, the Nock-based compiler used for running Jock programs and ZKVM applications.
+  
+### Step 4: Build
+```bash
+# Eden ZKVM, Jock language support
+make build-hoon-all
+
+# Rust-based node and drivers
+make build
+````
+
+### Step 5: Run NockChain Locally
+* Start a **Leader Node** (Testnet Node for fake genesis block):
+```bash
+make run-nockchain-leader
+```
+
+* Start a Follower Node (connects to another peer):
+```bash
+make run-nockchain-follower
+```
+
