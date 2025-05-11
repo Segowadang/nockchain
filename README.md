@@ -1,9 +1,9 @@
 ## Nockchain
-Nockchain uses ZK-Proof of Work as its consensus mechanism for providing trustless settlement and ordering guarantees. ZK-Proof of Work is similar to Hashing-Proof of Work in that miners compete to try to run a puzzle computation repeatedly with different nonces until the hash of the output is less than a targeted number, colloquially referred to as the difficulty. In our initial implementation of ZK-Proof of Work, miners create a Zero-Knowledge Proof (ZKP) of a fixed puzzle computation and then hash the ZKP.
+Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Work (zkPoW). Miners create a ZK-Proof (ZKP) of a fixed puzzle computation, then hash the ZKP, and earn $NOCK based on their computation power.
 
 ## $NOCK Details
 - Total Supply: 2^32 nocks (around 4.29 billion).
-- 100% of $NOCK is issued by the Nockchain ZKPoW consensus protocol to miners.
+- Fair launch: 100% of $NOCK will be issued to Miners.
 - $NOCK is used to pay for blockspace on Nockchain.
 
 
@@ -18,5 +18,8 @@ Nockchain uses ZK-Proof of Work as its consensus mechanism for providing trustle
 ![image](https://github.com/user-attachments/assets/ead8fbd3-4199-452a-94c4-68b371c21aad)
 
 ## Hardware Requirements
+* zkPoW is **CPU-mining** currently.
+* 16GB of RAM
+* 200GB of available disk space
 
 ## Setup
