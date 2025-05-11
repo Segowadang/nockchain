@@ -20,11 +20,11 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 ![image](https://github.com/user-attachments/assets/ead8fbd3-4199-452a-94c4-68b371c21aad)
 
 ## Hardware Requirements
-* zkPoW is **CPU-mining** currently.
+* zkPoW is **CPU-mining** currently
 * 16GB of RAM
 * 200GB of available disk space
-
-
+* System: Local PC or VPS
+* Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
 
 ## CLI Setup
 ### Step 1: Install Rust
@@ -56,14 +56,23 @@ make build-hoon-all
 make build
 ````
 
-### Step 5: Run NockChain Locally
+### Step 5: Run Leader Node
+* Open a screen:
+```bash
+screen -S leader
+```
 * Start a **Leader Node** (Testnet Node for fake genesis block):
 ```bash
 make run-nockchain-leader
 ```
 
-* Start a Follower Node (connects to another peer):
+### Step 6: Run Follower Node:
+* Open a screen
+```bash
+screen -S leader
+```
+
+* Start a **Follower Node** (Miner Node for connecting to other peers):
 ```bash
 make run-nockchain-follower
 ```
-
