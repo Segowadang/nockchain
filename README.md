@@ -160,6 +160,7 @@ make build
 ````
 
 ## Step 5: Setup Wallet
+Make sure you are in `nockchain` directory.
 * Set PATH:
 ```bash
 export PATH="$PATH:$(pwd)/target/release"
