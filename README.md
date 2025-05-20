@@ -197,6 +197,7 @@ sudo ufw allow 3006/tcp
 ```
 
 ### Step 8: Run Leader Node
+Leader Node is a fake testnet node. On mainnet Peer IDs will be replaced with Leader node, we only need to run Follower Node in the next step.
 * Open a screen:
 ```bash
 screen -S leader
@@ -270,10 +271,3 @@ screen -XS NAME quit
 Well, We just tested a Nockchain Miner node on the testnet, which is *NOT incentivized*. This was an experiment to prepare for the Mainnet launch on **May 19**. The team might update the docs with new features, and the Mainnet setup may ir may not differ.
 
 ---
-
-# GUI Setup (App)
-There's a new project called **Nockpool**, I think they are building a GUI-based Node so you can easily open a wallet on Windows and Mine $NOCK.
-* Register for Wallet email update: https://swps.io/wallet
-* Register for Nockpool email update: https://swps.io/nockpool
-
-![image](https://github.com/user-attachments/assets/6f58647d-2255-4ebb-839c-eeb539cac258)
