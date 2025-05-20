@@ -33,7 +33,7 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 ### Method 2: Pool
 You join 
 
-## Hardware Requirements For CLI Miner
+## Hardware Requirements
 Hardware requirement is highly speculative since no one knows how Mainnet-launch goes.
 
 <table>
