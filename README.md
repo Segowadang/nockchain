@@ -4,23 +4,38 @@ Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Wo
 The team has released a Public Testnet to run a ***local testnet node*** and a ***testnet miner***, to explore how Nockchain works before Mainnet goes live.
 
 ## $NOCK Details
-- Mining starts May 19th.
+- Mining starts May 21th. [Launch Countdown](https://nockstats.com/)
 - Total Supply: 2^32 nocks (around 4.29 billion).
 - Fair launch: 100% of $NOCK will be issued to Miners.
 - $NOCK is used to pay for blockspace on Nockchain.
 
 ## Mainnet Network Details
-- Mainnet to be launched in 19th May.
+- Mainnet to be launched in 21th May.
 - 10-min block times (like Bitcoin)
 - For Testnet, we run *"Miner"* and a *"simulated local testnet"* with a **fake genesis block**, to connect our Miner to it.
 - Once Mainnet live, **public peers** are published, so we just need to run Miner alone. It connects to public peers.
+- Before Mainnet launch, team will upload the [Official Repository ](https://github.com/zorp-corp/nockchain) with necessary updates like public peers url to connect our miner to.
 
 ## $NOCK Issuance Details
 - The **earlier** you start mining, the **BIGGER** rewards you are going to earn.
 
 ![image](https://github.com/user-attachments/assets/ead8fbd3-4199-452a-94c4-68b371c21aad)
 
-## Hardware Requirements
+## How to Mine
+* The mining terms is exactly same a Bitcoin PoW mining.
+* More computational power = More rewards
+* More miners on the network = Higher hashrate = More difficulty to mine rewards
+
+### Method 1: Solo (CLI):
+* You run a solo CPU-based Miner Node on your system which will certainly need a powerful hardware.
+* 
+
+### Method 2: Pool
+You join 
+
+## Hardware Requirements For CLI Miner
+Hardware requirement is highly speculative since no one knows how Mainnet-launch goes.
+
 <table>
   <tr>
     <th colspan="3">Miner is CPU-based initially</th>
