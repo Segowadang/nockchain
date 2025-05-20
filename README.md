@@ -145,18 +145,21 @@ cd nockchain
 
 ### Step 3: Install Choo (Jock/Hoon Compiler)
 ```bash
-make install-choo
+make install-hoonc
 ```
-* This compiles `choo`, the Nock-based compiler used for running Jock programs and ZKVM applications.
+* This compiles `hoonc`, the Nock-based compiler used for running Jock programs and ZKVM applications.
   
 ### Step 4: Build
 Building may take more than 15 minutes.
 ```bash
-# Eden ZKVM, Jock language
-make build-hoon-all
-
-# Rust-based node and drivers
+# Install node binaries
 make build
+
+# Install wallet binaries
+make install-nockchain-wallet
+
+# Install Nockchain
+make install-nockchain
 ````
 
 ## Step 5: Setup Wallet
@@ -167,7 +170,7 @@ export PATH="$PATH:$(pwd)/target/release"
 ```
 * Create wallet:
 ```bash
-wallet keygen
+nockchain-wallet keygen
 ```
 * Save `memo`, `private key` & `public key` of your wallet.
 > Note: After every terminal restart, Ensure you execute these two commands before executing wallet commands again: `cd nockchain` & `export PATH="$PATH:$(pwd)/target/release"`.  By doing this, you won't get Error: `wallet: command not found`.
@@ -232,11 +235,11 @@ I (12:18:32) nc: block by-height: [Ok(%heavy-n) Ok(1) 0]
 
 General Wallet Command:
 ```bash
-wallet --nockchain-socket ./test-leader/nockchain.sock
+nockchain-wallet --nockchain-socket ./test-leader/nockchain.sock
 ```
 Wallet Balance:
 ```bash
-wallet --nockchain-socket ./test-leader/nockchain.sock balance
+nockchain-wallet --nockchain-socket ./test-leader/nockchain.sock balance
 ```
 * It looks good. `~` is like a 0 and balance will be 0 until you mine a block.
 
