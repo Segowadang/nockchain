@@ -182,7 +182,21 @@ nano Makefile
 * `Ports`: By default, Nodes use ports `3005` and `3006`. If these ports are occupied on your system, modify them in the node configuration.
 * To save: `Ctrl+X` + `Y` + `Enter`
 
-### Step 7: Run Leader Node
+### Step 7: Open ports
+```console
+# Allow ssh port
+sudo ufw allow ssh
+sudo ufw allow 22
+
+# Enable firewall
+sudoufw enable
+
+# Open ports
+sudo ufw allow 3005/tcp
+sudo ufw allow 3006/tcp
+```
+
+### Step 8: Run Leader Node
 * Open a screen:
 ```bash
 screen -S leader
@@ -194,7 +208,7 @@ make run-nockchain-leader
 * Wait for it to install.
 * To minimize:  `Ctrl` + `A` + `D`
 
-### Step 8: Run Follower Node:
+### Step 9: Run Follower Node:
 * Open a screen
 ```bash
 screen -S follower
