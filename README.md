@@ -3,11 +3,15 @@ Nockchain is a lightweight chain for heavyweight compute. It uses ZK-Proof of Wo
 
 The team has released a Public Testnet to run a ***local testnet node*** and a ***testnet miner***, to explore how Nockchain works before Mainnet goes live.
 
+---
+
 ## $NOCK Details
 - Mining starts May 21th. [Launch Countdown](https://nockstats.com/)
 - Total Supply: 2^32 nocks (around 4.29 billion).
 - Fair launch: 100% of $NOCK will be issued to Miners.
 - $NOCK is used to pay for blockspace on Nockchain.
+
+---
 
 ## Mainnet Network Details
 - Mainnet to be launched in 21th May.
@@ -16,10 +20,19 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 - Once Mainnet live, **public peers** are published, so we just need to run Miner alone. It connects to public peers.
 - Before Mainnet launch, team will upload the [Official Repository ](https://github.com/zorp-corp/nockchain) with necessary updates like public peers url to connect our miner to.
 
+---
+
 ## $NOCK Issuance Details
 - The **earlier** you start mining, the **BIGGER** rewards you are going to earn.
 
-![image](https://github.com/user-attachments/assets/ead8fbd3-4199-452a-94c4-68b371c21aad)
+![image](https://github.com/user-attachments/assets/88a088b9-f082-45ae-9ffe-90009a713bfb)
+
+---
+
+## Nock Mining Dashboard
+This community-driven dashboard, [**NockStats**](https://nockstats.com/) has many good features like: Wallet balance, Trading, Tokenomics, Calculator, etc.
+
+---
 
 ## How to Mine
 * The mining terms is exactly same a Bitcoin PoW mining.
@@ -28,11 +41,19 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 
 ### Method 1: Solo (CLI):
 * You run a solo CPU-based Miner Node on your system which will certainly need a powerful hardware.
-* 
+* You can follow [CLI Setup](https://github.com/0xmoei/nockchain/blob/main/README.md#cli-miner-setup) steps.
 
-### Method 2: Pool
-You join 
+### Method 2: Pool & Method 3: GUI
+* You join a pool (same as bitcoin mining), share your computational power and earn rewards in a shared pool of rewards.
+* Official mining method is CLI introduced by the team, and no official Pool or GUI mining programs introduced.
+* But new community-driven *Projects* and *Pools* are poping up.
+* **GUI Setup (App)**: There's a new project called [**Nockpool**](https://swps.io/nockpool), I think they are building a GUI-based Node so you can easily open a wallet on Windows, join a pool, and Mine $NOCK.
 
+![image](https://github.com/user-attachments/assets/6f58647d-2255-4ebb-839c-eeb539cac258)
+
+---
+
+# CLI Miner Setup
 ## Hardware Requirements
 Hardware requirement is highly speculative since no one knows how Mainnet-launch goes.
 
@@ -48,7 +69,7 @@ Hardware requirement is highly speculative since no one knows how Mainnet-launch
   <tr>
     <td><code>64 GB</code></td>
     <td><code>6 cores or higher</code></td>
-    <td><code>50-200 GB SSD</code></td>
+    <td><code>100-200 GB SSD</code></td>
   </tr>
 </table>
 
@@ -70,7 +91,7 @@ Hardware requirement is highly speculative since no one knows how Mainnet-launch
 
 ---
 
-# CLI Setup
+## CLI Installation Steps
 ### Step 1: Install Dependecies
 * Update Packages
 ```bash
