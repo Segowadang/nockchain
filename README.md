@@ -31,7 +31,7 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
     <td>Disk</td>
   </tr>
   <tr>
-    <td><code>16 GB</code></td>
+    <td><code>64 GB</code></td>
     <td><code>6 cores or higher</code></td>
     <td><code>50-200 GB SSD</code></td>
   </tr>
