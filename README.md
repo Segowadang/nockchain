@@ -160,14 +160,10 @@ nockchain-wallet import-keys --input keys.export
 * Make sure `keys.export` is in your current directory
 
 ## Step 7: Get BTC Mainnet RPC -- (Mine Genesis Block)
-* If you want to join from **Genesis Block #0**, then you need to add `---btc-url` flags to your Node command and Connect your Miner to a BTC RPC.
-* Team will publish the Bitcoin block height at which the genesis block will start being mine. We need a Bitcoin Node since no one have access to the hash of the Genesis Block before it's mined.
-* If you don't want to join **Genesis Block #0**, Miner will work and "pass" the genesis block verification even if you do not connect your miner to a Bitcoin node.
+If you want to join from **Genesis Block #0**, then you need to connect your Miner to a BTC corenode.
+* 1- Get your free and private BTC Mainnet RPC from third-party platforms like: [Ankr](https://www.ankr.com/rpc/?utm_referral=LqL9Sv86Te), [QuickNode](https://dashboard.quicknode.com/), or [Alchemy](https://dashboard.alchemy.com/). 
 
-1- Get your free and private BTC Mainnet RPC from third-party platforms like: [Ankr](https://www.ankr.com/rpc/?utm_referral=LqL9Sv86Te), [QuickNode](https://dashboard.quicknode.com/), or [Alchemy](https://dashboard.alchemy.com/). 
-
-2- Check your RPC sync and connection status:
-* Replace `https://rpc.ankr.com/btc/{your_rpc_token}` with your RPC url.
+* 2- Check your RPC sync and connection status:
 ```
 curl -X POST https://rpc.ankr.com/btc/{your_rpc_token} \
 -d '{
@@ -176,6 +172,7 @@ curl -X POST https://rpc.ankr.com/btc/{your_rpc_token} \
       "params": []
 }'
 ```
+* Replace `https://rpc.ankr.com/btc/{your_rpc_token}` with your bitcoin RPC url.
 
 ### Step 8: Run Miner
 * Open a screen:
@@ -184,7 +181,11 @@ screen -S miner
 ```
 * Start a Miner:
 ```bash
+# Bypassing genesis block
 make run-nockchain
+
+# Mining genesis block
+nockchain --btc-node-url="btc-rpc-url" --btc-username="your-private-rpc-token" --btc-password="x" --genesis-watcher --mine --mining-pubkey=public-key
 ```
 * Wait for it to install.
 * To minimize screen:  `Ctrl` + `A` + `D`
