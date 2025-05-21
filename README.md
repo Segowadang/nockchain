@@ -294,3 +294,5 @@ screen -S miner
 ```
 nockchain --btc-node-url="http://127.0.0.1:8332/" --btc-username="BTC_TOKEN" --btc-password="x" --genesis-watcher --mine --mining-pubkey="PUB_KEY"
 ```
+
+Now continue from Step: [Useful commands](https://github.com/0xmoei/nockchain/blob/main/README.md#useful-commands)
