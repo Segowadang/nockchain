@@ -68,11 +68,7 @@ Hardware requirement is highly speculative since no one knows how Mainnet-launch
 * **Windows Users:** Install Linux Ubuntu on your Windows using this [Guide](https://github.com/0xmoei/Install-Linux-on-Windows)
 * **VPS:** Recommended crypto-payment VPS provider to [Purchase](https://my.hostbrr.com/order/forms/a/NTMxNw==) or Visit [VPS Beginner Guide](https://github.com/0xmoei/Linux_Node_Guide/)
 
-> Note: Miners are initially CPU-based for users and will eventually move to GPU and ASIC.
->
-> Zorp as a for-profit labs company behind Nockchain will be selling private, closed-source software to mining partners, possibly even GPU-based to help bootstrap the initial security and proofrate of the network.
->
-> Meaning they will likely dominate block rewards over the vast majority of people, but yet the protocol might potentially be rewarding for early users.
+> Note: Miners are initially CPU-based for users and will eventually move to GPU and ASIC later
 
 ---
 
