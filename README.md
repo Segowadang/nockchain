@@ -170,7 +170,7 @@ sudo ufw allow 3006/tcp
 ```
 
 ### Step 8: Run Miner
-Mining Genesis block needs to **"Setup a script + a bitcoin rpc"**. If want to bypass mining the Genesis block, then continue the following steps. If want to mine Genesis block, then Follow this step first.
+Mining Genesis block needs to **"Setup a script + a bitcoin rpc"**. If want to bypass mining the Genesis block, then continue the following steps. If want to mine Genesis block, then Follow step [Mine Genesis Block](https://github.com/0xmoei/nockchain/blob/main/README.md#mining-genesis-block) first.
 
 * Open a screen:
 ```bash
