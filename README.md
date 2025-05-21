@@ -186,8 +186,13 @@ nockchain --btc-node-url="btc-rpc-url" --btc-username="your-private-rpc-token" -
 * Wait for it to install.
 * To minimize screen:  `Ctrl` + `A` + `D`
 
-### Screen Useful Commands:
-Ensure screens do not overlap. Before opening or switching to another screen, minimize or close the current screen.
+### Useful Commands:
+* If you ever stopped your Miner, to restart it again, delete old data files first:
+```bash
+rm -rf ./.data.nockchain .socket/nockchain_npc.sock
+```
+
+* Ensure screens do not overlap. Before opening or switching to another screen, minimize or close the current screen.
 ```console
 # Return screen
 screen -r miner
