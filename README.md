@@ -155,33 +155,31 @@ nockchain-wallet import-keys --input keys.export
 ```
 * Make sure `keys.export` is in your current directory
 
-## Step 7: Get BTC Mainnet RPC -- (Mine Genesis Block)
-If you want to join from **Genesis Block #0**, then you need to connect your Miner to a BTC corenode.
-* 1- Get your free and private BTC Mainnet RPC from third-party platforms like: [Ankr](https://www.ankr.com/rpc/?utm_referral=LqL9Sv86Te), [QuickNode](https://dashboard.quicknode.com/), or [Alchemy](https://dashboard.alchemy.com/). 
+### Step 7: Open ports
+```console
+# Allow ssh port
+sudo ufw allow ssh
+sudo ufw allow 22
 
-* 2- Check your RPC sync and connection status:
+# Enable firewall
+sudo ufw enable
+
+# Open ports
+sudo ufw allow 3005/tcp
+sudo ufw allow 3006/tcp
 ```
-curl -X POST https://rpc.ankr.com/btc/{your_rpc_token} \
--d '{
-      "id": "hmm",
-      "method": "getindexinfo",
-      "params": []
-}'
-```
-* Replace `https://rpc.ankr.com/btc/{your_rpc_token}` with your bitcoin RPC url.
 
 ### Step 8: Run Miner
+Mining Genesis block needs to **"Setup a script + a bitcoin rpc"**. If want to bypass mining the Genesis block, then continue the following steps. If want to mine Genesis block, then Follow this step first.
+
 * Open a screen:
 ```bash
 screen -S miner
 ```
-* Start a Miner:
+* Start a Miner
 ```bash
 # Bypassing genesis block
 make run-nockchain
-
-# Mining genesis block
-nockchain --btc-node-url="btc-rpc-url" --btc-username="your-private-rpc-token" --btc-password="x" --genesis-watcher --mine --mining-pubkey=public-key
 ```
 * Wait for it to install.
 * To minimize screen:  `Ctrl` + `A` + `D`
@@ -218,3 +216,81 @@ screen -XS miner quit
 
 * How do I change the mining pubkey?
   * Run nockchain-wallet keygen to generate a new key pair and copy the new public key to the .env file.
+ 
+---
+
+# Mining Genesis Block
+
+## Step 1: Get BTC Mainnet RPC -- (Mine Genesis Block)
+If you want to join from **Genesis Block #0**, then you need to connect your Miner to a BTC corenode.
+* 1- Get your free and private BTC Mainnet RPC from [QuickNode](https://dashboard.quicknode.com/)
+  * Save your `RPC_URL` + `RPC_TOKEN`
+
+![image](https://github.com/user-attachments/assets/931921cf-7bd0-43d4-81f6-d21514b9c807)
+
+
+* 2- Check your RPC sync and connection status:
+```
+curl -X POST https://long-quick-shape.btc.quiknode.pro/{your_rpc_token} \
+-d '{
+      "id": "hmm",
+      "method": "getindexinfo",
+      "params": []
+}'
+```
+* Replace `https://long-quick-shape.btc.quiknode.pro/{your_rpc_token}` with your bitcoin `RPC_URL` + `RPC_TOKEN`.
+
+## Step 2: nginx Proxy for Bitcoin JSON-RPC
+```
+sudo apt update
+sudo apt install nginx
+```
+```
+sudo nano -p /etc/nginx/conf.d/btc-proxy.conf
+```
+* Paste this. Replace `RPC_URL` & `RPC_TOKEN`
+```server {
+    listen 8332;
+
+    location / {
+        proxy_pass https://RPC_URL/RPC_TOKEN/;
+        proxy_set_header Host https://RPC_URL;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_ssl_protocols TLSv1.2 TLSv1.3;
+        proxy_ssl_server_name on;
+    }
+}
+```
+```
+sudo nginx -t
+```
+```
+sudo systemctl reload nginx
+```
+```
+sudo nginx -s reload
+```
+
+## Step 3: Get local BTC RPC
+* Your Bitcoin RPC client is now: `http://127.0.0.1:8332/`
+
+* Try a simple request to get block number:
+```bash
+curl -v -X POST http://127.0.0.1:8332/ \
+  -H 'content-type: application/json' \
+  -d '{
+      "id": "test",
+      "method": "getblockchaininfo",
+      "params": []
+  }'
+```
+
+## Step 4: Run Miner (Genesis Mine)
+```
+screen -S miner
+```
+* Replace: `BTC_TOKEN` & `PUB_KEY`:
+```
+nockchain --btc-node-url="http://127.0.0.1:8332/" --btc-username="BTC_TOKEN" --btc-password="x" --genesis-watcher --mine --mining-pubkey="PUB_KEY"
+```
