@@ -6,26 +6,11 @@ The team has released a Public Testnet to run a ***local testnet node*** and a *
 ---
 
 ## $NOCK Details
-- Mining starts May 21th. [Launch Countdown](https://nockstats.com/)
+- Genesis Mainnet and NOCK Mining starts May 21th.
+- 10-min block times (like Bitcoin).
 - Total Supply: 2^32 nocks (around 4.29 billion).
 - Fair launch: 100% of $NOCK will be issued to Miners.
 - $NOCK is used to pay for blockspace on Nockchain.
-
----
-
-## Mainnet Network Details
-- Mainnet to be launched in 21th May.
-- 10-min block times (like Bitcoin)
-- For Testnet, we run *"Miner"* and a *"simulated local testnet"* with a **fake genesis block**, to connect our Miner to it.
-- Once Mainnet live, **public peers** are published, so we just need to run Miner alone. It connects to public peers.
-- Before Mainnet launch, team will upload the [Official Repository ](https://github.com/zorp-corp/nockchain) with necessary updates like public peers url to connect our miner to.
-
----
-
-## $NOCK Issuance Details
-- The **earlier** you start mining, the **BIGGER** rewards you are going to earn.
-
-![image](https://github.com/user-attachments/assets/88a088b9-f082-45ae-9ffe-90009a713bfb)
 
 ---
 
@@ -99,7 +84,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 ```
 * Install Packages:
 ```bash
-sudo apt install curl iptables build-essential git wget lz4 jq make gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev  -y
+sudo apt install curl iptables build-essential git wget lz4 jq make gcc nano automake autoconf tmux htop nvme-cli libgbm1 pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev libclang-dev llvm-dev -y
 ```
 * Rust:
 ```bash
@@ -136,46 +121,138 @@ sudo systemctl enable docker
 sudo systemctl restart docker
 ```
 
-### Step 2: Clone NockChain Repo
+### Step 2: Delete Old Repo and Wipe All Data
+```bash
+rm -rf nockchain
+rm -rf .nockapp
+```
+
+### Step 3: NockChain Repo
 ```bash
 git clone https://github.com/zorp-corp/nockchain
 
 cd nockchain
 ```
+  
+### Step 4: Build
+* Copy `.env` file from the example one:
+```bash
+cp .env_example .env
+```
 
-### Step 3: Install Choo (Jock/Hoon Compiler)
+* Build: (takes time depending on your hardware.)
 ```bash
 make install-hoonc
 ```
-* This compiles `hoonc`, the Nock-based compiler used for running Jock programs and ZKVM applications.
-  
-### Step 4: Build
-Building may take more than 15 minutes.
 ```bash
-# Install node binaries
 make build
-
-# Install wallet binaries
+```
+```bash
 make install-nockchain-wallet
-
-# Install Nockchain
+```
+```bash
 make install-nockchain
-````
+```
 
 ## Step 5: Setup Wallet
 Make sure you are in `nockchain` directory.
-* Set PATH:
+* **Set PATH:**
 ```bash
 export PATH="$PATH:$(pwd)/target/release"
 ```
-* Create wallet:
+* **Create wallet:**
 ```bash
 nockchain-wallet keygen
 ```
 * Save `memo`, `private key` & `public key` of your wallet.
 > Note: After every terminal restart, Ensure you execute these two commands before executing wallet commands again: `cd nockchain` & `export PATH="$PATH:$(pwd)/target/release"`.  By doing this, you won't get Error: `wallet: command not found`.
 
-## Step 6: Configure Nodes
+* Replace the value of `MINING_PUBKEY=` in `.env` with your own Public Key:
+```bash
+nano .env
+```
+To save: Press `Ctrl + X`, `Y` & `Enter`.
+
+## Step 6: Backup/Import Wallet Keys
+Backup wallet keys:
+```bash
+nockchain-wallet export-keys
+```
+* This will save your keys to a file called `keys.export` in the current directory.
+
+Import wallet keys:
+```bash
+nockchain-wallet import-keys --input keys.export
+```
+* Make sure `keys.export` is in your current directory
+
+## Step 7: Get BTC Mainnet RPC -- (Mine Genesis Block)
+* If you want to join from **Genesis Block #0**, then you need to add `---btc-url` flags to your Node command and Connect your Miner to a BTC RPC.
+* Team will publish the Bitcoin block height at which the genesis block will start being mine. We need a Bitcoin Node since no one have access to the hash of the Genesis Block before it's mined.
+* If you don't want to join **Genesis Block #0**, Miner will work and "pass" the genesis block verification even if you do not connect your miner to a Bitcoin node.
+
+1- Get your free and private BTC Mainnet RPC from third-party platforms like: [Ankr](https://www.ankr.com/rpc/?utm_referral=LqL9Sv86Te), [QuickNode](https://dashboard.quicknode.com/), or [Alchemy](https://dashboard.alchemy.com/). 
+
+2- Check your RPC sync and connection status:
+* Replace `https://rpc.ankr.com/btc/{your_rpc_token}` with your RPC url.
+```
+curl -X POST https://rpc.ankr.com/btc/{your_rpc_token} \
+-d '{
+      "id": "hmm",
+      "method": "getindexinfo",
+      "params": []
+}'
+```
+
+### Step 8: Run Miner
+* Open a screen:
+```bash
+screen -S miner
+```
+* Start a Miner:
+```bash
+make run-nockchain
+```
+* Wait for it to install.
+* To minimize screen:  `Ctrl` + `A` + `D`
+
+### Screen Useful Commands:
+Ensure screens do not overlap. Before opening or switching to another screen, minimize or close the current screen.
+```console
+# Return screen
+screen -r miner
+
+# Minimize screen
+Press: CTRL + A + D
+
+# Screens list
+screen -ls
+
+# Stop Node (when inside a screen)
+Press: Ctrl + C
+
+# Kill and Remove Node (when outside a screen)
+screen -XS miner quit
+```
+
+---
+
+## FAQ
+* Can I use same pubkey if running multiple miners?
+  * Yes, you can use the same pubkey if running multiple miners.
+
+* How do I change the mining pubkey?
+  * Run nockchain-wallet keygen to generate a new key pair and copy the new public key to the .env file.
+
+
+#
+
+#
+
+#
+
+
+## Step 5: Configure Nodes
 Your Node's configuration is in `Makefile`
 Open `Makefile`:
 ```bash
@@ -185,21 +262,21 @@ nano Makefile
 * `Ports`: By default, Nodes use ports `3005` and `3006`. If these ports are occupied on your system, modify them in the node configuration.
 * To save: `Ctrl+X` + `Y` + `Enter`
 
-### Step 7: Open ports
+### Step 6: Open ports
 ```console
 # Allow ssh port
 sudo ufw allow ssh
 sudo ufw allow 22
 
 # Enable firewall
-sudoufw enable
+sudo ufw enable
 
 # Open ports
 sudo ufw allow 3005/tcp
 sudo ufw allow 3006/tcp
 ```
 
-### Step 8: Run Leader Node
+### Step 7: Run Leader Node
 Leader Node is a fake testnet node. On mainnet Peer IDs will be replaced with Leader node, we only need to run Follower Node in the next step.
 * Open a screen:
 ```bash
@@ -212,12 +289,11 @@ make run-nockchain-leader
 * Wait for it to install.
 * To minimize:  `Ctrl` + `A` + `D`
 
-### Step 9: Run Follower Node:
+### Step 8: Run Follower Node:
 * Open a screen
 ```bash
 screen -S follower
 ```
-
 * Start a **Follower Node** (Miner Node for connecting to other peers):
 ```bash
 make run-nockchain-follower
@@ -228,49 +304,5 @@ I (12:18:31) "inner dumbnet cause: [%command %timer]"
 I (12:18:32) nc: block by-height: [Ok(%heavy-n) Ok(1) 0]
 ```
 * To minimize:  `Ctrl` + `A` + `D`
-
-## Usefull commands
-### Wallet commands:
-> Note: After every terminal restart, Ensure you execute these two commands before executing wallet commands again: `cd nockchain` & `export PATH="$PATH:$(pwd)/target/release"`.  By doing this, you won't get Error: `wallet: command not found`.
-
-General Wallet Command:
-```bash
-nockchain-wallet --nockchain-socket ./test-leader/nockchain.sock
-```
-Wallet Balance:
-```bash
-nockchain-wallet --nockchain-socket ./test-leader/nockchain.sock balance
-```
-* It looks good. `~` is like a 0 and balance will be 0 until you mine a block.
-
-![image](https://github.com/user-attachments/assets/52550e55-21b2-4625-84f9-3250eca367f5)
-
-* [Official repo](https://github.com/zorp-corp/nockchain/blob/master/crates/wallet/README.md) for more Wallet commands.
-
-### Screen commands:
-Ensure screens do not overlap. Before opening or switching to another screen, minimize or close the current screen.
-```console
-# Return leader screen (leader logs)
-screen -r leader
-
-# Return leader screen (follower logs)
-screen -r follower
-
-# Minimize screen
-Press: CTRL + A + D
-
-# Screens list
-screen -ls
-
-# Stop Node when inside a screen
-Press: Ctrl + C
-
-# Kill and Remove screen when outside a screen (replace NAME)
-screen -XS NAME quit
-```
-
----
-
-Well, We just tested a Nockchain Miner node on the testnet, which is *NOT incentivized*. This was an experiment to prepare for the Mainnet launch on **May 19**. The team might update the docs with new features, and the Mainnet setup may ir may not differ.
 
 ---
