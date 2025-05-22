@@ -1,0 +1,15 @@
+{
+  "name": "Nockchain Dev",
+  "image": "mcr.microsoft.com/devcontainers/rust:latest",
+  "postCreateCommand": "cargo build",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer"
+      ]
+    }
+  },
+  "features": {
+    "git": "latest"
+  }
+}
