@@ -1,7 +1,12 @@
 {
   "name": "Nockchain Dev",
   "image": "mcr.microsoft.com/devcontainers/rust:latest",
-  "postCreateCommand": "cargo build",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -9,11 +14,5 @@
       ]
     }
   },
-  "features": {
-    "ghcr.io/devcontainers/features/sshd:1": {
-      "version": "latest"
-    },
-    "git": "latest"
-  },
-  "remoteUser": "vscode"
+  "postCreateCommand": "cargo build"
 }
