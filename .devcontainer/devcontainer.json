@@ -10,6 +10,10 @@
     }
   },
   "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    },
     "git": "latest"
-  }
+  },
+  "remoteUser": "vscode"
 }
